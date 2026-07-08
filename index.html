@@ -5,215 +5,211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kembabazi Fancy — Full Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0B0F14;
-    --surface: #121822;
-    --surface-2: #182130;
-    --border: #232C3B;
-    --copper: #B87333;
-    --copper-bright: #D4915A;
-    --trace: #4FD1A5;
-    --text: #E8E6E1;
-    --text-muted: #8A94A6;
+    --bg: #241924;
+    --surface: #2E1F2E;
+    --surface-2: #3A2839;
+    --border: #4A3548;
+    --gold: #D4A574;
+    --gold-bright: #E4BC8E;
+    --blush: #E8B4BC;
+    --text: #F5EDE9;
+    --text-muted: #B79FAE;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--bg);
     color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
+    font-family:'Work Sans',sans-serif;
+    line-height:1.7;
   }
-  h1,h2,h3,.mono{font-family:'JetBrains Mono',monospace;}
+  h1,h2,h3{font-family:'Fraunces',serif;}
   a{color:inherit;text-decoration:none;}
-  .grid-bg{
-    position:fixed;inset:0;z-index:0;
-    background-image:
-      linear-gradient(rgba(184,115,51,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(184,115,51,0.05) 1px, transparent 1px);
-    background-size:40px 40px;
-    pointer-events:none;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
-  .trace-line{
-    position:absolute;
-    left:24px;
-    top:0;
-    width:2px;
-    background:linear-gradient(var(--copper), var(--trace));
-    z-index:0;
-    transition:height 0.6s ease-out;
-  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
   header.hero{
-    min-height:100vh;
+    min-height:90vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    position:relative;
   }
-  .prompt-line{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--trace);
-    font-size:0.9rem;
-    margin-bottom:16px;
-    letter-spacing:0.5px;
-  }
-  .prompt-line::before{content:"$ ";color:var(--copper);}
-  .cursor{
-    display:inline-block;width:9px;height:1.1em;
-    background:var(--copper-bright);
-    vertical-align:text-bottom;
-    animation:blink 1s step-end infinite;
-    margin-left:2px;
-  }
-  @keyframes blink{50%{opacity:0;}}
-  h1.name{
-    font-size:clamp(2.4rem, 7vw, 4.6rem);
-    font-weight:800;
-    letter-spacing:-1px;
-    line-height:1.05;
+  .eyebrow{
+    font-size:0.85rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--blush);
     margin-bottom:18px;
-  }
-  h1.name .accent{color:var(--copper-bright);}
-  .role{
-    font-size:clamp(1.1rem, 2.4vw, 1.5rem);
-    color:var(--text-muted);
     font-weight:500;
-    margin-bottom:28px;
-    max-width:620px;
+  }
+  h1.name{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    font-weight:600;
+    line-height:1.15;
+    margin-bottom:20px;
+  }
+  h1.name .accent{color:var(--gold-bright);font-style:italic;}
+  .role{
+    font-size:clamp(1.05rem, 2vw, 1.25rem);
+    color:var(--text-muted);
+    max-width:600px;
+    margin-bottom:32px;
   }
   .hero-links{display:flex;gap:14px;flex-wrap:wrap;}
   .btn{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.85rem;
-    padding:12px 20px;
+    font-size:0.9rem;
+    padding:13px 24px;
     border:1px solid var(--border);
-    border-radius:4px;
-    transition:border-color 0.2s, background 0.2s;
+    border-radius:30px;
+    transition:all 0.2s;
   }
-  .btn:hover{border-color:var(--copper);background:var(--surface-2);}
-  .btn.primary{background:var(--copper);border-color:var(--copper);color:#0B0F14;font-weight:700;}
-  .btn.primary:hover{background:var(--copper-bright);}
-  section{padding:100px 0 40px;position:relative;}
-  .section-marker{
-    display:flex;align-items:center;gap:14px;margin-bottom:44px;
+  .btn:hover{border-color:var(--gold);background:var(--surface-2);}
+  .btn.primary{background:var(--gold);border-color:var(--gold);color:#241924;font-weight:600;}
+  .btn.primary:hover{background:var(--gold-bright);}
+
+  section{padding:80px 0;}
+  .divider{
+    width:60px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:24px;
   }
-  .solder-point{
-    width:14px;height:14px;border-radius:50%;
+  .section-title{font-size:clamp(1.6rem, 3vw, 2.2rem);font-weight:600;margin-bottom:20px;}
+  .section-intro{color:var(--text-muted);max-width:620px;margin-bottom:44px;font-size:1.05rem;}
+
+  .about-text{color:var(--text-muted);max-width:680px;font-size:1.05rem;}
+  .about-text strong{color:var(--text);font-weight:600;}
+
+  .services{display:grid;gap:18px;grid-template-columns:1fr;}
+  @media(min-width:640px){.services{grid-template-columns:1fr 1fr;}}
+  .service-card{
     background:var(--surface);
-    border:2px solid var(--copper);
-    flex-shrink:0;
-    box-shadow:0 0 0 4px var(--bg);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
   }
-  .section-title{font-size:1rem;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;}
-  .section-title .num{color:var(--copper-bright);}
-  .layers{display:grid;gap:16px;}
+  .service-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;margin-bottom:10px;color:var(--gold-bright);}
+  .service-desc{color:var(--text-muted);font-size:0.95rem;}
+
+  .layers{display:grid;gap:14px;}
   .layer{
     background:var(--surface);
     border:1px solid var(--border);
-    border-left:3px solid var(--copper);
-    border-radius:6px;
-    padding:22px 26px;
+    border-radius:12px;
+    padding:20px 24px;
     display:grid;
-    grid-template-columns:140px 1fr;
-    gap:20px;
+    grid-template-columns:130px 1fr;
+    gap:18px;
     align-items:center;
   }
-  .layer-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--copper-bright);letter-spacing:1px;}
+  .layer-label{font-weight:600;color:var(--gold-bright);font-size:0.9rem;letter-spacing:0.5px;}
   .chips{display:flex;flex-wrap:wrap;gap:8px;}
   .chip{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.8rem;
-    padding:6px 12px;
+    font-size:0.85rem;
+    padding:6px 14px;
     background:var(--surface-2);
     border:1px solid var(--border);
-    border-radius:4px;
-    color:var(--text);
+    border-radius:20px;
   }
+
   .projects{display:grid;gap:20px;grid-template-columns:1fr;}
   @media(min-width:640px){.projects{grid-template-columns:1fr 1fr;}}
   .project-card{
     background:var(--surface);
     border:1px solid var(--border);
-    border-radius:8px;
+    border-radius:14px;
     padding:26px;
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:10px;
     transition:transform 0.2s, border-color 0.2s;
   }
-  .project-card:hover{transform:translateY(-4px);border-color:var(--copper);}
-  .project-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--trace);letter-spacing:1px;text-transform:uppercase;}
-  .project-title{font-size:1.15rem;font-weight:700;}
-  .project-desc{color:var(--text-muted);font-size:0.94rem;flex-grow:1;}
-  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .project-card:hover{transform:translateY(-4px);border-color:var(--gold);}
+  .project-tag{font-size:0.75rem;color:var(--blush);letter-spacing:1px;text-transform:uppercase;font-weight:600;}
+  .project-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;}
+  .project-desc{color:var(--text-muted);font-size:0.95rem;flex-grow:1;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
   .project-stack span{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.7rem;color:var(--text-muted);
+    font-size:0.75rem;color:var(--text-muted);
     border:1px solid var(--border);
-    padding:3px 8px;border-radius:3px;
+    padding:3px 10px;border-radius:14px;
   }
-  .project-links{display:flex;gap:14px;margin-top:6px;font-size:0.85rem;}
-  .project-links a{color:var(--copper-bright);border-bottom:1px solid transparent;}
-  .project-links a:hover{border-bottom-color:var(--copper-bright);}
-  .todo-flag{
-    display:inline-block;margin-top:10px;font-size:0.72rem;
-    color:var(--text-muted);font-family:'JetBrains Mono',monospace;
-    border:1px dashed var(--border);padding:4px 8px;border-radius:3px;
-  }
+  .project-status{font-size:0.82rem;color:var(--gold-bright);margin-top:4px;}
+
   .contact-grid{display:grid;gap:14px;grid-template-columns:1fr;}
   @media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr;}}
   .contact-card{
     background:var(--surface);
     border:1px solid var(--border);
-    border-radius:6px;
+    border-radius:12px;
     padding:20px 24px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:12px;
   }
-  .contact-card:hover{border-color:var(--copper);}
-  .contact-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--text-muted);}
+  .contact-card:hover{border-color:var(--gold);}
+  .contact-label{font-size:0.8rem;color:var(--text-muted);}
   .contact-value{font-weight:600;}
+
   footer{
     padding:50px 0 60px;
     text-align:center;
     color:var(--text-muted);
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.8rem;
+    font-size:0.85rem;
   }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
-<div class="trace-line" id="trace"></div>
-
 <div class="wrap">
 
   <header class="hero">
-    <div class="prompt-line">whoami<span class="cursor"></span></div>
-    <h1 class="name">KEMBABAZI<br><span class="accent">FANCY</span></h1>
-    <p class="role">Full stack developer. I build the interface, the server behind it, and sometimes the circuit board underneath. JavaScript, PHP, Laravel, Python, React, Arduino.</p>
+    <div class="eyebrow">Full Stack Developer</div>
+    <h1 class="name">Kembabazi Fancy<br><span class="accent">builds software that works.</span></h1>
+    <p class="role">I design and build web sites, web apps, and mobile apps from start to finish. Frontend, backend, and the hardware side too, when a project needs it.</p>
     <div class="hero-links">
-      <a class="btn primary" href="mailto:fancykembabazi29@gmail.com">Email me</a>
-      <a class="btn" href="https://github.com/fancykembabazi" target="_blank">GitHub</a>
+      <a class="btn primary" href="mailto:fancykembabazi29@gmail.com">Work with me</a>
+      <a class="btn" href="https://github.com/fancykey" target="_blank">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/fancykembabazi29" target="_blank">LinkedIn</a>
     </div>
   </header>
 
-  <section id="stack">
-    <div class="section-marker">
-      <div class="solder-point"></div>
-      <div class="section-title"><span class="num">01</span> / STACK</div>
+  <section id="about">
+    <div class="divider"></div>
+    <div class="section-title">About me</div>
+    <p class="about-text">I am a full stack developer building products end to end. On the frontend I work with <strong>JavaScript, React, HTML, CSS, and Bootstrap</strong>. On the backend I work with <strong>PHP, Laravel, and Python</strong>. I also build with <strong>Arduino</strong>, so I take on projects that connect software to real hardware, not only browsers and servers. I care about clean, working software and about clients who feel heard through the whole build.</p>
+  </section>
+
+  <section id="services">
+    <div class="divider"></div>
+    <div class="section-title">Services</div>
+    <p class="section-intro">Available for day to day software work, from a small fix to a full build.</p>
+    <div class="services">
+      <div class="service-card">
+        <div class="service-title">Web Development</div>
+        <div class="service-desc">Full websites and web apps, from the interface your visitors see to the server and database behind it.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Mobile App Development</div>
+        <div class="service-desc">Mobile-facing apps and interfaces built with React, connected to solid backend systems.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Backend & APIs</div>
+        <div class="service-desc">Laravel and Python backends, databases, and APIs that power your site or app.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Hardware Integration</div>
+        <div class="service-desc">Arduino-based projects where software needs to sense or control something in the real world.</div>
+      </div>
     </div>
+  </section>
+
+  <section id="stack">
+    <div class="divider"></div>
+    <div class="section-title">Stack</div>
     <div class="layers">
       <div class="layer">
-        <div class="layer-label">FRONTEND</div>
+        <div class="layer-label">Frontend</div>
         <div class="chips">
           <div class="chip">JavaScript</div>
           <div class="chip">React</div>
@@ -223,7 +219,7 @@
         </div>
       </div>
       <div class="layer">
-        <div class="layer-label">BACKEND</div>
+        <div class="layer-label">Backend</div>
         <div class="chips">
           <div class="chip">PHP</div>
           <div class="chip">Laravel</div>
@@ -231,7 +227,7 @@
         </div>
       </div>
       <div class="layer">
-        <div class="layer-label">HARDWARE</div>
+        <div class="layer-label">Hardware</div>
         <div class="chips">
           <div class="chip">Arduino</div>
           <div class="chip">C/C++</div>
@@ -241,58 +237,61 @@
   </section>
 
   <section id="projects">
-    <div class="section-marker">
-      <div class="solder-point"></div>
-      <div class="section-title"><span class="num">02</span> / PROJECTS</div>
-    </div>
+    <div class="divider"></div>
+    <div class="section-title">Projects</div>
+    <p class="section-intro">In active build. New commits going up on GitHub this week.</p>
     <div class="projects">
 
       <div class="project-card">
         <div class="project-tag">Web App</div>
-        <div class="project-title">Project name here</div>
-        <div class="project-desc">One or two sentences on what this project does and the problem it solves.</div>
-        <div class="project-stack"><span>Laravel</span><span>React</span><span>MySQL</span></div>
-        <div class="project-links"><a href="#">Live demo</a><a href="#">Code</a></div>
-        <div class="todo-flag">replace with a real project</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tag">Hardware + Software</div>
-        <div class="project-title">Project name here</div>
-        <div class="project-desc">One or two sentences on what this project does, what it senses or controls, and what runs the logic.</div>
-        <div class="project-stack"><span>Arduino</span><span>Python</span></div>
-        <div class="project-links"><a href="#">Demo video</a><a href="#">Code</a></div>
-        <div class="todo-flag">replace with a real project</div>
+        <div class="project-title">Skincare Recommendation App</div>
+        <div class="project-desc">Recommends skincare products and routines based on a user's skin type and concerns. React interface, Laravel backend handling the recommendation logic and data.</div>
+        <div class="project-stack"><span>React</span><span>Laravel</span><span>MySQL</span></div>
+        <div class="project-status">Code going up on GitHub this week</div>
       </div>
 
       <div class="project-card">
         <div class="project-tag">Web App</div>
-        <div class="project-title">Project name here</div>
-        <div class="project-desc">One or two sentences on what this project does and why you built it.</div>
-        <div class="project-stack"><span>PHP</span><span>Bootstrap</span></div>
-        <div class="project-links"><a href="#">Live demo</a><a href="#">Code</a></div>
-        <div class="todo-flag">replace with a real project</div>
+        <div class="project-title">Offline Learning Management App</div>
+        <div class="project-desc">A learning platform for students and instructors to manage lessons and track progress. Works fully offline through local storage, then syncs once a connection returns.</div>
+        <div class="project-stack"><span>React</span><span>Laravel</span><span>Python</span></div>
+        <div class="project-status">Code going up on GitHub this week</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Web App</div>
+        <div class="project-title">Women's Shopping App</div>
+        <div class="project-desc">An online store built for women's fashion and beauty products, with browsing, cart, and checkout designed for a smooth shopping experience.</div>
+        <div class="project-stack"><span>React</span><span>Laravel</span><span>Bootstrap</span></div>
+        <div class="project-status">Code going up on GitHub this week</div>
       </div>
 
     </div>
   </section>
 
   <section id="contact">
-    <div class="section-marker">
-      <div class="solder-point"></div>
-      <div class="section-title"><span class="num">03</span> / CONTACT</div>
-    </div>
+    <div class="divider"></div>
+    <div class="section-title">Contact</div>
+    <p class="section-intro">Reach out for web development, mobile app development, or any software project you have in mind.</p>
     <div class="contact-grid">
       <a class="contact-card" href="mailto:fancykembabazi29@gmail.com">
-        <span class="contact-label">EMAIL</span>
+        <span class="contact-label">Email</span>
         <span class="contact-value">fancykembabazi29@gmail.com</span>
       </a>
-      <a class="contact-card" href="https://github.com/fancykembabazi" target="_blank">
-        <span class="contact-label">GITHUB</span>
-        <span class="contact-value">@fancykembabazi</span>
+      <a class="contact-card" href="tel:0787593333">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">0787 593 333</span>
+      </a>
+      <a class="contact-card" href="tel:0731493673">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">0731 493 673</span>
+      </a>
+      <a class="contact-card" href="https://github.com/fancykey" target="_blank">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@fancykey</span>
       </a>
       <a class="contact-card" href="https://www.linkedin.com/in/fancykembabazi29" target="_blank">
-        <span class="contact-label">LINKEDIN</span>
+        <span class="contact-label">LinkedIn</span>
         <span class="contact-value">/in/fancykembabazi29</span>
       </a>
     </div>
@@ -301,17 +300,6 @@
   <footer>Built by Kembabazi Fancy</footer>
 
 </div>
-
-<script>
-  const trace = document.getElementById('trace');
-  function updateTrace(){
-    const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    const maxHeight = document.body.scrollHeight - 100;
-    trace.style.height = Math.min(scrollPercent * maxHeight + 400, maxHeight) + 'px';
-  }
-  window.addEventListener('scroll', updateTrace);
-  window.addEventListener('load', updateTrace);
-</script>
 
 </body>
 </html>
