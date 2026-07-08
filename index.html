@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kembabazi Fancy — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0F14;
+    --surface: #121822;
+    --surface-2: #182130;
+    --border: #232C3B;
+    --copper: #B87333;
+    --copper-bright: #D4915A;
+    --trace: #4FD1A5;
+    --text: #E8E6E1;
+    --text-muted: #8A94A6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;
+    background-image:
+      linear-gradient(rgba(184,115,51,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,115,51,0.05) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+  .trace-line{
+    position:absolute;
+    left:24px;
+    top:0;
+    width:2px;
+    background:linear-gradient(var(--copper), var(--trace));
+    z-index:0;
+    transition:height 0.6s ease-out;
+  }
+  header.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+  }
+  .prompt-line{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--trace);
+    font-size:0.9rem;
+    margin-bottom:16px;
+    letter-spacing:0.5px;
+  }
+  .prompt-line::before{content:"$ ";color:var(--copper);}
+  .cursor{
+    display:inline-block;width:9px;height:1.1em;
+    background:var(--copper-bright);
+    vertical-align:text-bottom;
+    animation:blink 1s step-end infinite;
+    margin-left:2px;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  h1.name{
+    font-size:clamp(2.4rem, 7vw, 4.6rem);
+    font-weight:800;
+    letter-spacing:-1px;
+    line-height:1.05;
+    margin-bottom:18px;
+  }
+  h1.name .accent{color:var(--copper-bright);}
+  .role{
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem);
+    color:var(--text-muted);
+    font-weight:500;
+    margin-bottom:28px;
+    max-width:620px;
+  }
+  .hero-links{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;
+    padding:12px 20px;
+    border:1px solid var(--border);
+    border-radius:4px;
+    transition:border-color 0.2s, background 0.2s;
+  }
+  .btn:hover{border-color:var(--copper);background:var(--surface-2);}
+  .btn.primary{background:var(--copper);border-color:var(--copper);color:#0B0F14;font-weight:700;}
+  .btn.primary:hover{background:var(--copper-bright);}
+  section{padding:100px 0 40px;position:relative;}
+  .section-marker{
+    display:flex;align-items:center;gap:14px;margin-bottom:44px;
+  }
+  .solder-point{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--surface);
+    border:2px solid var(--copper);
+    flex-shrink:0;
+    box-shadow:0 0 0 4px var(--bg);
+  }
+  .section-title{font-size:1rem;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;}
+  .section-title .num{color:var(--copper-bright);}
+  .layers{display:grid;gap:16px;}
+  .layer{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-left:3px solid var(--copper);
+    border-radius:6px;
+    padding:22px 26px;
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:20px;
+    align-items:center;
+  }
+  .layer-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--copper-bright);letter-spacing:1px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.8rem;
+    padding:6px 12px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:4px;
+    color:var(--text);
+  }
+  .projects{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media(min-width:640px){.projects{grid-template-columns:1fr 1fr;}}
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:transform 0.2s, border-color 0.2s;
+  }
+  .project-card:hover{transform:translateY(-4px);border-color:var(--copper);}
+  .project-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--trace);letter-spacing:1px;text-transform:uppercase;}
+  .project-title{font-size:1.15rem;font-weight:700;}
+  .project-desc{color:var(--text-muted);font-size:0.94rem;flex-grow:1;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .project-stack span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;color:var(--text-muted);
+    border:1px solid var(--border);
+    padding:3px 8px;border-radius:3px;
+  }
+  .project-links{display:flex;gap:14px;margin-top:6px;font-size:0.85rem;}
+  .project-links a{color:var(--copper-bright);border-bottom:1px solid transparent;}
+  .project-links a:hover{border-bottom-color:var(--copper-bright);}
+  .todo-flag{
+    display:inline-block;margin-top:10px;font-size:0.72rem;
+    color:var(--text-muted);font-family:'JetBrains Mono',monospace;
+    border:1px dashed var(--border);padding:4px 8px;border-radius:3px;
+  }
+  .contact-grid{display:grid;gap:14px;grid-template-columns:1fr;}
+  @media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr;}}
+  .contact-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:20px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .contact-card:hover{border-color:var(--copper);}
+  .contact-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--text-muted);}
+  .contact-value{font-weight:600;}
+  footer{
+    padding:50px 0 60px;
+    text-align:center;
+    color:var(--text-muted);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="trace-line" id="trace"></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="prompt-line">whoami<span class="cursor"></span></div>
+    <h1 class="name">KEMBABAZI<br><span class="accent">FANCY</span></h1>
+    <p class="role">Full stack developer. I build the interface, the server behind it, and sometimes the circuit board underneath. JavaScript, PHP, Laravel, Python, React, Arduino.</p>
+    <div class="hero-links">
+      <a class="btn primary" href="mailto:fancykembabazi29@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/fancykembabazi" target="_blank">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/fancykembabazi29" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <section id="stack">
+    <div class="section-marker">
+      <div class="solder-point"></div>
+      <div class="section-title"><span class="num">01</span> / STACK</div>
+    </div>
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-label">FRONTEND</div>
+        <div class="chips">
+          <div class="chip">JavaScript</div>
+          <div class="chip">React</div>
+          <div class="chip">HTML</div>
+          <div class="chip">CSS</div>
+          <div class="chip">Bootstrap</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-label">BACKEND</div>
+        <div class="chips">
+          <div class="chip">PHP</div>
+          <div class="chip">Laravel</div>
+          <div class="chip">Python</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-label">HARDWARE</div>
+        <div class="chips">
+          <div class="chip">Arduino</div>
+          <div class="chip">C/C++</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-marker">
+      <div class="solder-point"></div>
+      <div class="section-title"><span class="num">02</span> / PROJECTS</div>
+    </div>
+    <div class="projects">
+
+      <div class="project-card">
+        <div class="project-tag">Web App</div>
+        <div class="project-title">Project name here</div>
+        <div class="project-desc">One or two sentences on what this project does and the problem it solves.</div>
+        <div class="project-stack"><span>Laravel</span><span>React</span><span>MySQL</span></div>
+        <div class="project-links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        <div class="todo-flag">replace with a real project</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Hardware + Software</div>
+        <div class="project-title">Project name here</div>
+        <div class="project-desc">One or two sentences on what this project does, what it senses or controls, and what runs the logic.</div>
+        <div class="project-stack"><span>Arduino</span><span>Python</span></div>
+        <div class="project-links"><a href="#">Demo video</a><a href="#">Code</a></div>
+        <div class="todo-flag">replace with a real project</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Web App</div>
+        <div class="project-title">Project name here</div>
+        <div class="project-desc">One or two sentences on what this project does and why you built it.</div>
+        <div class="project-stack"><span>PHP</span><span>Bootstrap</span></div>
+        <div class="project-links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        <div class="todo-flag">replace with a real project</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-marker">
+      <div class="solder-point"></div>
+      <div class="section-title"><span class="num">03</span> / CONTACT</div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:fancykembabazi29@gmail.com">
+        <span class="contact-label">EMAIL</span>
+        <span class="contact-value">fancykembabazi29@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://github.com/fancykembabazi" target="_blank">
+        <span class="contact-label">GITHUB</span>
+        <span class="contact-value">@fancykembabazi</span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/fancykembabazi29" target="_blank">
+        <span class="contact-label">LINKEDIN</span>
+        <span class="contact-value">/in/fancykembabazi29</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>Built by Kembabazi Fancy</footer>
+
+</div>
+
+<script>
+  const trace = document.getElementById('trace');
+  function updateTrace(){
+    const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const maxHeight = document.body.scrollHeight - 100;
+    trace.style.height = Math.min(scrollPercent * maxHeight + 400, maxHeight) + 'px';
+  }
+  window.addEventListener('scroll', updateTrace);
+  window.addEventListener('load', updateTrace);
+</script>
+
+</body>
+</html>
